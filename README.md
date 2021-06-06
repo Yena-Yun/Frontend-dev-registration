@@ -16,12 +16,12 @@
 
 
 ## 2. Desktop 버전
-<img width="80%" src="https://user-images.githubusercontent.com/68722179/120912544-16e99680-c6cb-11eb-86f9-02e2f3464f2b.png" />
+<img width="90%" src="https://user-images.githubusercontent.com/68722179/120912544-16e99680-c6cb-11eb-86f9-02e2f3464f2b.png" />
 
-<img width="80%" src="https://user-images.githubusercontent.com/68722179/120912545-181ac380-c6cb-11eb-9b58-fbd9b16431d3.png" />
+<img width="90%" src="https://user-images.githubusercontent.com/68722179/120912545-181ac380-c6cb-11eb-9b58-fbd9b16431d3.png" />
 
-<img width="80%" src="https://user-images.githubusercontent.com/68722179/120912546-181ac380-c6cb-11eb-888a-0e30c18cca26.png" />
+<img width="90%" src="https://user-images.githubusercontent.com/68722179/120912546-181ac380-c6cb-11eb-888a-0e30c18cca26.png" />
 
-<img width="80%" src="https://user-images.githubusercontent.com/68722179/120912547-18b35a00-c6cb-11eb-89da-0e9addb3a434.png" />
+<img width="90%" src="https://user-images.githubusercontent.com/68722179/120912547-18b35a00-c6cb-11eb-89da-0e9addb3a434.png" />
 
 

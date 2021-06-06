@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Final Project</title>
+	<!-- Google Fonts 시작코드 -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+	<!-- Bootstrap 시작코드 -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+	<link rel="stylesheet" href="./grid.min.css">
+	<link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+	<!-- class를 주는 이유: css에서 선택해서 꾸미기 위해 -->
+	<section class="landing">
+		<!-- container, row, col의 padding, margin은 그리드 시스템을 구성하는 데 쓰이므로 절대 수정하지 않는다.
+				(단, col의 margin-bottom 정도는 괜찮)-->
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<!-- landing-content 클래스: 안에 있는 요소들을 height: 100vh 내에서
+							세로로 가운데 정렬(flex) 해주는 역할 (100vh는 순수 모바일용 - 핸드폰 화면을 꽉 채움) -->
+					<div class="landing-content">
+						<h1 class="landing-title">
+							Change your career,
+							<br />
+							Change your life
+						</h1>
+						<p class="landing-desc">
+							Get ahead with expert-led training in
+							<br />
+							frontend development
+						</p>
+						<!-- 버튼 여러개를 감싸는 div가 하나 필요: wrapper 또는 group -->
+						<div class="button-wrapper">
+							<!-- 버튼 2개는 똑같은 구조니까 공통된 class를 주고 -->
+							<a href="#" class="fill-button">Apply now</a>
+							<!-- 두 번째 버튼에서는 색깔만 뒤집혔으므로 그걸 처리하기 위한 'inverted' 클래스 추가 -->
+							<a href="#" class="fill-button inverted">Learn more</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="service">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-md-6">
+					<h2 class="service-title">
+						Master the Fundamentals while Exploring new Tech
+					</h2>
+					<p class="service-desc">
+						We teach cutting-edge tech Full Stack Javascript as well as Computer Science fundamentals.
+					</p>
+				</div>
+				<div class="col-12 col-md-6">
+					<h2 class="service-title">
+						Develop Production Level Web Applications
+					</h2>
+					<p class="service-desc">
+						You put your knowledge into action with carefully designed assignments and personal software engineering
+						projects.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 이름으로 주는 program 클래스 + css를 부여하기 위한 section 클래스 -->
+	<section class="program section">
+		<div class="container">
+			<!-- row에 display: flex 내재되어 있고 bootstrap 자체 내장클래스인 justify-content-center 사용 가능
+				(css의 display: flex,... 없이 바로 요소들 가운데 정렬)-->
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-10">
+					<!-- 카테고리 -> 중요 (strong) -->
+					<!-- program과 curriculum의 텍스트 부분 비슷 => 공통모듈(section) 만들어 처리  -->
+					<strong class="section-category">Program</strong>
+					<!-- section 하나 당 h1 한 개 -->
+					<h1 class="section-title">
+						Frontend Dev.
+						<br />
+						Immersive Course
+					</h1>
+					<p class="section-desc">
+						Your best course for career transformation in front-end developement. This full-time bootcamp features
+						expert
+						instruction, one-on-one career coaching, and connections to top employers to get you hired.
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 col-md-4">
+					<!-- 카드를 누르면 어딘가로 이동 -> a 태그로 처리 -->
+					<!-- program-card라는 공통 클래스를 줘서 비슷한 속성을 한번에 처리 -->
+					<a href="#" class="program-card">
+						<!-- (여기서는 a 태그가 div의 역할을 하므로 따로 image 클래스 주기 위한 div 만들지 않음) -->
+						<img src="./assets/img-fulltime-campus.png" alt="fulltime-campus">
+						<!-- p로 하기에는 길이가 짧지만, span으로 하기에는 중요한 내용 -> strong으로 처리 -->
+						<strong>
+							Full-Time On Campus
+						</strong>
+					</a>
+				</div>
+				<div class="col-12 col-md-4">
+					<a href="#" class="program-card">
+						<img src="./assets/img-fulltime-remote.png" alt="fulltime-remote">
+						<strong>
+							Full-Time On Remote
+						</strong>
+					</a>
+				</div>
+				<div class="col-12 col-md-4">
+					<a href="#" class="program-card">
+						<img src="./assets/img-parttime-flex.png" alt="parttime-flex">
+						<strong>
+							Part-Time Flex
+						</strong>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="curriculum section">
+		<div class="container">
+			<!-- 이미지 가운데 배치 - bootstrap 자체 클래스 활용 -->
+			<div class="row align-items-center">
+				<div class="col-12 col-md-6">
+					<strong class="section-category">
+						Curriculum
+					</strong>
+					<h1 class="section-title">
+						Dive into the web
+						<br />
+						development
+					</h1>
+					<p class="section-desc">
+						Dive into the software development environment and the basics of computing, networks,
+						and data structures.
+					</p>
+					<a href="#" class="fill-button">
+						Apply now
+					</a>
+				</div>
+				<div class="col-12 col-md-6">
+					<!-- img는 div로 한번 더 감싸줌 -> img 사이즈의 기준이 되는 width 부여(img에서는 width: 100%로 처리)
+							+ css에서 선택하기 위한 클래스도 여기에 부여 -->
+					<div class="curriculum-image">
+						<img src="./assets/img-curriculum.png" alt="curriculum">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 col-md-6">
+					<p class="curriculum-detail-desc">
+						<strong>
+							Real-World Projects.
+						</strong>
+						Solve challenges that professional engineers face as you work individually and
+						in teams with designers.
+					</p>
+				</div>
+				<div class="col-12 col-md-6">
+					<p class="curriculum-detail-desc">
+						<strong>
+							Individualised Instructor Support.
+						</strong>
+						Get guidance, feedback, and more during scheduled one-on-one check-ins.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 구독은 주된 정보를 전달하는 파트는 아니어서 section이 아닌 aside로 처리 -->
+	<aside class="subscription">
+		<div class="container">
+			<!-- row 갯수는 데스크탑일 때가 기준 - 데스크탑에서 봤을 때 1개면 1개로 잡아야 함 -->
+			<div class="row align-items-center">
+				<div class="col-12 col-md-5">
+					<!-- img를 div로 한번 더 감싸주고 클래스를 줌 -->
+					<div class="subscription-image">
+						<img src="./assets/img-banner.png" alt="Subscribe Us">
+					</div>
+				</div>
+
+				<div class="col-12 col-md-7">
+					<h1 class="subscription-title">
+						Stay with us
+					</h1>
+					<p class="subscription-desc">
+						Subscribe to our email newsletter to stay up to date on the latest updates
+					</p>
+					<!-- form의 클래스 = 해당 섹션명 + form -->
+					<form class="subscription-form" action="" method="POST">
+						<!-- form 안에 div(input-group)를 넣어 input과 button을 감싼다 -->
+						<div class="input-group">
+							<input type="email" placeholder="Enter your email">
+							<!-- 'form을 제출'하는 것은 button의 submit 써야 (=> 화면을 이동해도 a 태그 쓰지 않음)-->
+							<button type="submit" class="fill-button">Get started</button>
+						</div>
+						<p class="form-notice">
+							Cancel any time. Check out <a href="#">Terms of Use.</a>
+						</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</aside>
+
+	<!-- header와 마찬가지로 footer라는 태그가 따로 있음 -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<!-- 의미상 'footer의 list목록'이므로 ul과 li를 사용 -->
+					<!-- ul과 li을 css에서 선택하기 위한 class를 각각 준다 (ul은 보통 li에 주는 클래스명의 복수형)-->
+					<ul class="footer-links">
+						<li class="footer-link">
+							<a href="#">Terms</a>
+						</li>
+						<li class="footer-link">
+							<a href="#">Privacy</a>
+						</li>
+						<li class="footer-link">
+							<a href="#">License</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+
+</html>

@@ -1,0 +1,625 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body {
+	font-family: 'DM Sans', sans-serif;
+}
+
+/* Reset CSS */
+
+/* a 태그의 기본속성 없애기 */
+a {
+	/* 글자색: 부모의 color 상속받기 */
+	color: inherit; 
+	/* 밑줄 없애기 (a의 밑줄은 border-bottom이 아니라 text-decoration) */
+	text-decoration: none;
+}
+
+/* body의 font-family가 잘 안 먹는 요소들: button, input, textarea
+	=> font-family와 기본 글자크기 따로 주기 (기본 크기가 11px로 너무 작아서 16px로 변경) */
+button,
+input,
+textarea {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 16px;
+	/* textarea 때문에 여기서는 border: none 못 줌 (button, input 사용 시 각각 따로 처리해줘야) */
+	/* border: none; */
+}
+
+/* button, input, textarea 활성화 시 기본속성 제거 */
+button:focus,
+button:active,
+input:focus,
+input:active,
+textarea:focus,
+textarea:active {
+	/* 주변에 생기는 테두리 제거 */
+	outline: none;
+	box-shadow: none;
+}
+
+/* ul, ol, li 처리 */
+ul,
+ol,
+li {
+	/* li 옆의 동그란 글머리 기호 제거 */
+	list-style-type: none;
+	/* 들여쓰기 때문에 자동으로 생기는 padding과 margin 제거 */
+	padding: 0;
+	margin: 0;
+}
+
+/* 본문 폰트는 보통 p 태그의 font-size를 기준으로 함
+		(p 태그가 양이 많기도 하고, 보통 전체 p 태그 css가 똑같게 적용되는 경우가 많아서) */
+/* 전체 p 태그의 글자크기, 줄간격, 글자색깔, 글자간격 지정 */
+p {
+	font-size: 16px;
+	line-height: 1.5; /* 24/16 */
+	color: #2B292D;
+	letter-spacing: -0.01em; /* 1% */
+}
+
+/* global 하게 사용할 버튼: 구체적인 이름(landing-button) 대신 더 보편적인 이름(fill-button)으로 */
+.fill-button {
+	width: 140px;
+	height: 48px;
+	/* inline-flex: inline 성격을 가진 flex (=> flex도 줄 수 있으면서 inline 속성으로 나란히 배치 가능) */
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	/* 기본 border 제거 */
+	border: none;
+	/* button이나 input 등 면적 있는 요소들은 border-radius 꼭 확인 */
+	border-radius: 2px;
+	background-color: #3040C4;
+	color: #fff;
+	
+	/* 버튼 안에 들어가는 텍스트 => button의 {children}이므로 button 내에서 처리 */
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 1.6; /* 24/15 */
+	letter-spacing: -0.05em;
+
+	/* 마우스 hover 시 투명도 효과 부드럽게 나타나게 */
+	transition: opacity 300ms ease-in-out;
+}
+
+.fill-button:hover {
+	/* 기본이 a 태그여서 hover하면 글자가 파랗게 됨 => 제거 */
+	color: #fff;
+	/* 마우스 올릴 때 투명도 높아지는 효과 */
+	opacity: 0.5;
+}
+
+/* 'fill-button이자 inverted인 태그' -> 구체적으로 선택 */
+/* fill-button에서 바뀌는 부분만 선언  */
+.fill-button.inverted {
+	background-color: #fff;
+	color: #3040C4;
+}
+
+.fill-button.inverted:hover {
+	color: #3040C4;
+}
+
+
+/* (모바일이 기본값이므로, 처음에 만들 때 데스크탑 크기는 신경쓰지 말기) */
+/* mobile용 작업화면 확인 -> 개발자도구 상단의 'Toggle device toolbar' 활용 */
+
+
+/* 공통 모듈 */
+/* (program 파트와 curriculum 파트에서 공통으로 쓰이는 부분) */
+.section {
+	padding: 80px 0;
+}
+
+/* program, curriculum 텍스트 */
+.section-category {
+	/* strong 태그는 inline 속성 -> margin 주려면 block 속성 필요 */
+	display: block;
+	margin-bottom: 8px;
+	font-size: 16px;
+	line-height: 1.5; /* 24/16 */
+	letter-spacing: -0.01em;
+}
+
+.section-title {
+	margin-bottom: 24px;
+	font-size: 34px;
+	font-weight: 700;
+	line-height: 1.0588235294; /* 36/34 */
+	letter-spacing: -0.03em;
+	color: #2B292D;
+}
+
+
+/* Landing Section */
+/* 320 x 568 : iPhone SE 사이즈 
+	=> landing 부분이 320px에 568px이므로 분홍 배경이 곧 폰사이즈 화면전체라는 걸 알 수 있음 */
+
+.landing {
+	background-color: #FDDED8;
+	/* 텍스트뿐만 아니라 button 요소도 text-align으로 가운데정렬 가능
+		=> 따라서 보통 text-align은 상위요소에게 준다 */
+	text-align: center;
+}
+
+/* 화면을 꽉 채우는 높이와 flex를 주기 위한 클래스 */
+.landing-content {
+	width: 100%;
+	height: 100vh;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.landing-title {
+	margin-bottom: 24px;
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: -0.05em;
+	color: #2B292D;
+}
+
+.landing-desc {
+	margin-bottom: 24px;
+}
+
+/* .button-wrapper처럼 흔한 클래스명은 앞에 부모(상위) 클래스를 명시해주기 */
+.landing .button-wrapper {
+	/* 위에서 text-align으로 가운데 정렬한 것은 button-wrapper 단위이므로, flex를 통해 button-wrapper 안의 요소들을 한번 더 정렬 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* 'landing의 button-wrapper 안에 있는 fill-button(2개) 중 첫번째 자식요소' (=> landing의 첫번째 파란 버튼) */
+.landing .button-wrapper .fill-button:first-child {
+	/* 흰 버튼과 간격 띄움 */
+	margin-right: 8px;
+}
+
+
+/* Service Section */
+
+.service {
+	background-color: #F4F5F7;
+	padding: 80px 0;
+}
+
+.service .col-12:first-child {
+	margin-bottom: 40px;
+}
+
+.service-title {
+	margin-bottom: 16px;
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 1.3636363636; /* 30/22 */
+	letter-spacing: -0.04em;
+	color: #2B292D;
+}
+
+
+/* Program Section */
+
+.program .section-category {
+	color: #009B4D;
+}
+
+/* program에 row 2개 - program 소개하는 텍스트와 카드 부분 */
+/* section-desc(p태그)로 지엽적으로 잡는 것보다 이렇게 잡는 게 의미적으로 더 맞음 */
+.program .row:first-child {
+	margin-bottom: 32px;
+}
+
+/* 마지막 카드의 margin-bottom을 없애주는 작업을 해야 하므로 program-card에 넣지 않고 따로 뺀다 */
+/* 각 카드를 col-md-4 클래스로 선택한다 */
+.program .col-md-4 {
+	margin-bottom: 20px;
+}
+
+/* 맨 마지막 카드의 margin-bottom 제거 */
+.program .col-md-4:last-child {
+	margin-bottom: 0;
+}
+
+/* 카드 세 개에 공통 속성 적용 */
+.program-card {
+	display: block;
+	padding: 24px 0 32px;
+	/* 면적 있는 요소는 반드시 border-radius 확인 */
+	border-radius: 8px;
+	background: #fff;
+	text-align: center;
+	/* figma 창 크게 해서 inpect 아래의 code로 가면 box-shadow 코드 있음 */
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1),
+	0px 4px 6px rgba(0, 0, 0, 0.05),
+	inset 0px 1px 0px rgba(255, 255, 255, 0.1);
+	/* hover 시 바뀌는 효과를 좀 더 부드럽게 처리
+	(program-card에 hover 효과가 있다면 transition은 program-card:hover가 아닌 program-card에 줘야) */
+	/* transition을 여러개에 줄 때는 ','로 연결 */
+	transition: background-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
+}
+
+/* 각 카드에 마우스 hover 시 배경색이 파란색으로, 글자색이 흰색으로 바뀌며 box-shadow도 더 짙어짐 */
+/* (strong은 가리키는 태그가 따로 있으니 따로 처리해주기) */
+.program-card:hover {
+	background-color: #3141C5;
+	box-shadow: 0px 13px 18px rgba(0, 0, 0, 0.15),
+	0px 11px 55px rgba(0, 0, 0, 0.07);
+}
+
+.program-card strong {
+	font-size: 18px;
+	line-height: 1.3333333333;
+	/* 24/18 */
+	letter-spacing: -0.02em;
+	/* hover 시 strong이 바뀌는 효과를 부드럽게 */
+	transition: color 300ms ease-in-out;
+}
+
+.program-card:hover strong {
+	color: #fff;
+}
+
+.program-card img {
+	/* img는 inline이므로 margin이나 width 주려면 display: block 필요 */
+	display: block;
+	width: auto;
+	height: 195px;
+	/* margin: 0 auto - 이미지를 가운데 정렬 */
+	/* display: flex와 다르게 margin: 0 auto는 실제로 정렬하려는 요소 자체에 줘야 함 */
+	margin: 0 auto 16px;
+}
+
+
+/* Curriculum */
+
+.curriculum .section-category {
+	/* 공통속성에 지정되지 않은 것만 따로 처리 */
+	color: #0189D1;
+}
+
+.curriculum .section-desc {
+	margin-bottom: 32px;
+}
+
+.curriculum-image {
+	/* mobile일 때는 이미지 안 보이게 */
+	display: none;
+}
+
+.curriculum .row:first-child {
+	margin-bottom: 48px;
+}
+
+/* 'Real-World~' p 태그 부분 */
+/* 'curriculum의 row의 마지막(두번째도 last-child 사용)의 col-12 중 첫번째 */
+/* (선택자가 조금 길어지더라도 정확하게 선택) */
+.curriculum .row:last-child .col-12:first-child {
+	margin-bottom: 40px;
+}
+
+.curriculum-detail-desc {
+	margin-bottom: 0;
+	font-size: 15px;
+	line-height: 1.4666666667; /* 22/15 */
+}
+
+
+/* Subscription */
+
+.subscription {
+	/* 전체 요소를 가운데 정렬하는 text-align은 제일 상위 요소에 주기 */
+	text-align: center;
+	padding: 40px 0;
+	background-color: #F2F8FA;
+}
+
+.subscription-image {
+	padding: 25px 0;
+	margin-bottom: 16px;
+}
+
+.subscription-image img {
+	/* img는 inline이므로 꼭 block 속성으로 */
+	display: block;
+	width: auto;
+	height: 190px;
+	/* 이미지를 상위 div 내에서 가운데로 정렬 */
+	margin: 0 auto;
+}
+
+.subscription-title {
+	margin-bottom: 16px;
+	font-size: 32px;
+	font-weight: 700;
+	line-height: 1; 
+	letter-spacing: -0.05em;
+	color: #2B292D;
+}
+
+.subscription-desc {
+	margin-bottom: 24px;
+}
+
+/* 클래스명에 최상위 클래스명('subscription')이 포함되어 있는 경우 
+	최상위 클래스명을 생략하고 해당 클래스명을 맨 앞에 사용 */
+.subscription-form .input-group {
+	/* ** margin을 주려는 요소가 상위 요소로 감싸져 있으면
+		개별 요소가 아닌 그 상위 요소에게 margin을 준다 (지엽적인 속성부여 방지) */
+	margin-bottom: 8px;
+}
+
+.subscription-form .input-group input {
+	width: 100%;
+	height: 48px;
+	padding: 0 16px;
+	/* figma에서 요소를 여러 번 클릭하면 더 상세한 정보 조회 가능!
+		(button, input 등 면적 있는 요소는 반드시 border-radius와 background-color 확인!!) */
+	border-radius: 2px;
+	background-color: #fff;
+	border: none;
+	margin-bottom: 8px;
+}
+
+.subscription-form .input-group .fill-button {
+	/* 버튼 너비를 상위 너비만큼 꽉 채우기 */
+	width: 100%;
+}
+
+.subscription-form .form-notice {
+	color: #7B7B7E;
+	font-size: 13px;
+	line-height: 1.5384615385; /* 20/13 */
+	/* 원래 p에 있던 letter-spacing 초기화 */
+	letter-spacing: 0;
+}
+
+/* Terms of Use 부분 */
+.subscription-form .form-notice a {
+	color: #3040C4;
+	text-decoration: underline;
+}
+
+
+/* Footer */
+
+.footer {
+	padding: 24px 0;
+}
+
+.footer-link {
+	margin-bottom: 8px;
+}
+
+/* 맨 마지막 li의 margin-bottom 제거 */
+.footer-link:last-child {
+	margin-bottom: 0;
+}
+
+.footer-link a {
+	color: #807F81;
+	font-size: 14px;
+	line-height: 1.7142857143; /* 24/14 */
+	letter-spacing: -0.01em;
+}
+
+
+/* >= 768px (Desktop) */
+/* final 프로젝트 가이드라인: '모바일 시안과 데스크탑 시안의 중단점(Breakpoint)은 768px' */
+/* (중단점: 화면을 늘이거나 줄일 때 모바일에서 데스크탑으로 변하는 시점) */
+
+/* 모바일에서 데스크탑으로 전환할 때(= 화면이 768px 이상일 때) 바뀌는 부분만 작성 */
+@media screen and (min-width: 768px) {
+
+	/* Reset CSS */
+
+	p {
+		font-size: 22px;
+		line-height: 1.4545454545; /* 32/22 */
+	}
+
+	.fill-button {
+		width: 160px;
+		height: 56px;
+		/* 버튼 안의 폰트도 처리 (폰트크기와 줄간격만 달라짐) */
+		font-size: 18px;
+		line-height: 1.5555555556; /* 28/18 */
+	}
+
+	/* program, curriculum 공통 부분 */
+	.section {
+		padding-bottom: 96px;
+	}
+
+	.section-category {
+		margin-bottom: 16px;
+		font-size: 22px;
+		line-height: 1.0909090909; /* 24/22 */
+	}
+
+	.section-title {
+		margin-bottom: 32px;
+		font-size: 56px;
+		line-height: 1;
+	}
+
+	/* Landing */
+	.landing-content {
+		/* 데스크탑에서는 모바일처럼 분홍색 부분의 height가 100vh(화면전체)일 필요가 없음 */
+		height: auto; /* auto를 써주면 기존 효과 무효화 */
+		/* 위아래로 padding 120px */
+		padding: 120px 0; 
+	}
+
+	.landing-title {
+		margin-bottom: 32px;
+		font-size: 70px;
+		line-height: 1.0285714286; /* 72/70 */
+	}
+
+	.landing-desc {
+		margin-bottom: 32px;
+	}
+
+	.landing .button-wrapper .fill-button:first-child {
+		margin-right: 16px;
+	}
+
+	/* Service */
+	/* 모바일 상 landing 화면에서 스크롤을 내려 볼 수 있는 화면이므로 height: 100vh 안 맞춰도 됨 */
+	.service .col-12:first-child {
+		/* 기존에 모바일에서 있었던 margin-bottom을 0으로 만들어 제거 */
+		margin-bottom: 0;
+	}
+	
+	.service-title {
+		font-size: 26px;
+		line-height: 1.3076923077; /* 34/26 */
+	}
+
+	/* Program */
+	.program {
+		/* 모바일에서는 텍스트가 왼쪽정렬이지만 데스크탑 버전에서는 가운데정렬임 */
+		text-align: center;
+	}
+
+	.program-card {
+		margin-bottom: 0;
+	}
+
+	.program .row:first-child {
+		margin-bottom: 72px;
+	}
+
+	.program-card img {
+		margin-bottom: 24px;
+	}
+
+	.program-card strong {
+		font-size: 20px;
+		line-height: 1.2; /* 24/20 */
+	}
+
+	/* Curriculum */
+	.curriculum .section-desc {
+		margin-bottom: 72px;
+	}
+
+	.curriculum-image {
+		display: block;
+	}
+
+	.curriculum-image img {
+		display: block;
+		/* width를 100%(상위요소 크기)에 맞추되, 아무리 커도 425px 이상은 못 커지게 */
+		width: 100%;
+		max-width: 425px;
+		height: auto;
+	}
+
+	.curriculum .row:first-child {
+		margin-bottom: 24px;
+	}
+
+	.curriculum-detail-desc {
+		font-size: 18px;
+		line-height: 1.4444444444; /* 26/18 */
+	}
+
+	.curriculum .row:last-child .col-12:first-child {
+		margin-bottom: 0;
+	}
+
+
+	/* Subscription */
+
+	.subscription {
+		text-align: left;
+		padding: 80px 0;
+	}
+
+	.subscription-image {
+		/* padding만 위아래로 8px */
+		padding: 8px 0;
+	}
+
+	.subscription-image img {
+		height: 285px;
+		/* margin: 0 auto로 가운데 정렬한 것을 왼쪽 정렬 */
+		margin-left: 0;
+	}
+
+	.subscription-title {
+		font-size: 40px;
+	}
+
+	.subscription-form .input-group {
+		/* input창과 button을 가로정렬 */
+		display: flex;
+		/* 그 안에서 세로축으로 가운데 */
+		align-items: center;
+		/* 아래 'Cancel ~' 부분과의 margin */
+		margin-bottom: 4px;
+	}
+
+	.subscription .input-group input {
+		height: 56px;
+		font-size: 18px;
+		line-height: 1.3333333333; /* 24/18 */
+		margin-bottom: 0;
+		margin-right: 8px;
+	}
+
+	.subscription .input-group .fill-button {
+		/* width를 특정 px로 정하고 */
+		width: 160px;
+		/* display: flex로 요소들 배치 - 요소들의 너비가 상위 요소의 너비를 채우지 못하고 공간이 남을 경우, 
+			요소 중 하나에 flex-grow: 1을 주면 그 요소가 늘어나면서 해당 너비를 채움. 
+			요소들의 너비가 상위 요소의 너비를 초과해서 특정 요소의 너비가 지나치게 줄어든 경우, 
+			해당 요소에 flex-shrink: 0(false와 비슷)을 주면 다른 요소의 너비를 줄여서라도 본래 자기 너비를 되찾음 */
+		flex-shrink: 0;
+	}
+
+	.subscription-form .form-notice {
+		font-size: 14px;
+		line-height: 1.7142857143; /* 24/14 */
+	}
+
+	/* Footer */
+	.footer {
+		padding: 16px 0;
+	}
+
+	.footer-links {
+		/* 데스크탑에서는 가로 배치 */
+		display: flex;
+		align-items: center;
+	}
+
+	.footer-link {
+		margin-right: 16px;
+		margin-bottom: 0;
+	}
+
+	.footer-link:last-child {
+		margin-right: 0;
+	}
+
+}
+
+	/* Custom Grid System - Fix container width */
+	/* 프로젝트 가이드에서 '그리드 시스템은 maximum container 사이즈를 960px로 제한한다'는 부분 처리 */
+	/* 화면 사이즈가 1200px 이상일 때 (pc 화면이 클 때) */
+	@media screen and (min-width: 1200px) {
+		/* container의 최대 사이즈는 960px으로 (=> 960px 이상으로 안 커지게) */
+		.container {
+			max-width: 960px !important;
+		}
+	}
